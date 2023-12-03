@@ -34,24 +34,24 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> courses = [];
   String textField = "";
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  
 
-  void _addCourse(String course) {
+  void addCourse(String course) {
     setState(() {
       courses.add(course);
     });
   }
 
-  void _removeCourse(String course) {
+  void removeCourse(String course) {
     setState(() {
       courses.remove(course);
     });
   }
-
+void incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     trailing: IconButton(
                       icon: const Icon(Icons.delete),
                       onPressed: () {
-                        _removeCourse(courses[index]);
+                        removeCourse(courses[index]);
                       },
                     ),
                   );
@@ -113,8 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      _addCourse(textField);
-                      _incrementCounter();
+                      addCourse(textField);
+                      incrementCounter();
                       Navigator.of(context).pop();
                     },
                     child: const Text('OK'),
